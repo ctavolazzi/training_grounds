@@ -14,6 +14,8 @@ warrior2 = Warrior("Glubart", 100, 6, [Items[1]])
 print("Warrior 2 : ")
 print(warrior2)
 
+
+# Set up environmental variables
 warriors = []
 
 warriors.append(warrior1)
@@ -23,9 +25,11 @@ print("Warriors: ")
 for Warrior in warriors:
   print(Warrior)
 
-# Set up environmental variables
 
 # Perform final check
+print("Does this look right?")
+print("(readout of simulation parameters)")
+proceed_with_simulation = input("Y, N? ").lower()
 
 # Run simulation
 fight_result = fight(warrior1, warrior2)
