@@ -5,7 +5,7 @@ from fight import fight
 
 
 # # Initialize the simulation
-
+print("Initializing...")
 # warrior1 = Warrior("Ognar", 100, 5, [Items[0]])
 # print("Warrior 1: ")
 # print(warrior1)
