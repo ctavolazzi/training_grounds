@@ -3,7 +3,8 @@ from warrior_code.Warrior import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
 from warrior_code.item_check import item_check
-# from fight import fight
+from arena_code.fight import fight
+from run_simulation import run_simulation
 
 
 # # Initialize the simulation
@@ -66,7 +67,7 @@ proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
   # Run simulation
   # Call functions here to run the simulation
-  print("Simulation Complete")
+  print("Running simulation...")
 elif proceed_with_simulation == "N":
   # Run environmental setup again
   # Note: environmental setup should be extracted and encapsulated in modular code
@@ -76,4 +77,9 @@ else:
   print("Unrecognized Input...Simulation Cancelled")
 
 # # Run simulation
-# fight_result = fight(warrior1, warrior2)
+result = run_simulation(warriors)
+"""
+Put the warriors in the arena
+Make them fight
+Only one is victorious
+"""
