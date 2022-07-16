@@ -1,8 +1,8 @@
 # # Import functions, classes, items, etc
-from Warrior import Warrior
+from warrior_code.Warrior import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
-from helper_functions.item_check import item_check
+from warrior_code.item_check import item_check
 # from fight import fight
 
 

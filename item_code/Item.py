@@ -1,6 +1,6 @@
 # import uuid
 import random
-from item_name_generator import item_name_generator
+from item_code.item_name_generator import item_name_generator
 
 class Item:
   def __init__(self, name = None, ap = None):
