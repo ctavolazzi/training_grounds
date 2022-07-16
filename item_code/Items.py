@@ -3,6 +3,7 @@ from item_code.Item import Item # Use when debugging the main app.py file
 
 Items = [
   Item("Basic Sword", 1),
+  Item(),
   Item()
 ]
 
