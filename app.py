@@ -26,10 +26,12 @@ custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
 custom_items = input("Do you want to customize your Items?\n(Y), (N)? ")
 
 if custom_items.lower() == "y":
-  print("Customize your Items\n")
+  print("\nPlease customize your Items\n")
   count = 0
   while count < int(number_of_items):
-    items.append(Item(input("Name: "), input("AP: ")))
+    item = Item(input("Name: "), input("AP: "))
+    print("Item " + str(count)+ ":\n", item, "\n")
+    items.append(item)
     count+=1
 else:
   print("Generating random Items...\n")
@@ -39,10 +41,12 @@ else:
     count+=1
 
 if custom_warriors.lower() == "y":
-  print("Customize your Warriors\n")
+  print("\nPlease customize your Warriors\n")
   count = 0
   while count < int(number_of_warriors):
-    warriors.append(Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(items)))
+    warrior = Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(items))
+    print("Warrior " + str(count) + ":\n", warrior, "\n")
+    warriors.append(warrior)
     count+=1
 else:
   print("Generating random Warriors...\n")
@@ -60,6 +64,8 @@ for Warrior in warriors:
 # print("(readout of simulation parameters)")
 proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
+  # Run simulation
+  # Call functions here to run the simulation
   print("Simulation Complete")
 elif proceed_with_simulation == "N":
   # Run environmental setup again
@@ -69,5 +75,5 @@ elif proceed_with_simulation == "N":
 else:
   print("Unrecognized Input...Simulation Cancelled")
 
-# Run simulation
+# # Run simulation
 # fight_result = fight(warrior1, warrior2)
