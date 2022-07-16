@@ -13,7 +13,8 @@ class Item:
       self.ap = random.randint(1, 10)
 
   def __str__(self):
-    return f'name: {self.name}, ap: {self.ap}, id: {id(self)}'
+    # return f'name: {self.name}, ap: {self.ap}, id: {id(self)}' # I discovered there's a built-in id function and I didn't need the uuid thing at all. Such is life.
+    return f'name: {self.name}, ap: {self.ap}'
 
   # def __repr__(self):
   #   return f'name: {self.name}, ap: {self.ap}, abilities: {self.abilities}'
