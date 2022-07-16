@@ -19,7 +19,7 @@ def item_name_generator(item = None):
   types = ["Sword", "Axe", "Pike", "Trident", "Net", "Broadsword", "Shield", "Claw", "Bat", "Stick", "Scythe", "Mallet", "Flail"]
   pre = ["Great", "Weak", "Basic", "Sharp", "Dull", "Long", "Bloody", "Damaged", "Honed", "Battle-worn", "Sturdy", "Heavy"]
   flairs = ["of Onyx", "of the Eagle", "of Greatness", "of the Bear", "of Strength", "of the Bull", "of the Night", "of Righteousness", "of the Unholy"]
-  result = str(pre[random.randint(0, len(pre) - 1)]) + " " + str(types[random.randint(0, len(types) - 1)]) + str(flairs[random.randint(0, len(flairs) - 1)])
+  result = str(pre[random.randint(0, len(pre) - 1)]) + " " + str(types[random.randint(0, len(types) - 1)]) + " " + str(flairs[random.randint(0, len(flairs) - 1)])
   return result
 
 # # Debugging
