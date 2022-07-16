@@ -1,8 +1,8 @@
 # # Import functions, classes, items, etc
 from Warrior import Warrior
-from Items import Items
-from fight import fight
+from item_code.Items import Items
 from helper_functions.item_check import item_check
+# from fight import fight
 
 
 # # Initialize the simulation
