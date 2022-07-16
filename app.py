@@ -2,6 +2,7 @@
 from Warrior import Warrior
 from Items import Items
 from fight import fight
+from helper_functions.item_check import item_check
 
 
 # # Initialize the simulation
@@ -22,14 +23,6 @@ warriors = []
 number_of_warriors = input("How many Warriors?: ")
 
 count = 0
-
-def item_check(Items):
-  if len(Items) > 0:
-    selected_item = Items.pop()
-    return [selected_item]
-  else:
-    return []
-
 while count < int(number_of_warriors):
   warriors.append(Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(Items)))
   count+=1
