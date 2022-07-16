@@ -20,17 +20,30 @@ print("Initializing...")
 
 # # Set up environmental variables
 warriors = []
-number_of_warriors = input("How many Warriors?: ")
-
-count = 0
-while count < int(number_of_warriors):
-  warriors.append(Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(Items)))
-  count+=1
-# warriors.append(warrior1)
-# warriors.append(warrior2)
-# print("Warriors: ")
-# for Warrior in warriors:
-#   print(Warrior)
+custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
+if custom_warriors.lower() == "y":
+  number_of_warriors = input("How many Warriors?: ")
+  print("Customize your Warriors\n")
+  # count = 0
+  # while count < int(number_of_warriors):
+  #   warriors.append(Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(Items)))
+  #   count+=1
+  # # warriors.append(warrior1)
+  # # warriors.append(warrior2)
+  # # print("Warriors: ")
+  # # for Warrior in warriors:
+  # #   print(Warrior)
+else:
+  print("Generating random Warriors...\n")
+  # count = 0
+  # while count < int(number_of_warriors):
+  #   warriors.append(Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(Items)))
+  #   count+=1
+  # # warriors.append(warrior1)
+  # # warriors.append(warrior2)
+  # # print("Warriors: ")
+  # # for Warrior in warriors:
+  # #   print(Warrior)
 
 
 # # Perform final check
@@ -40,7 +53,6 @@ for Warrior in warriors:
   print(Warrior)
 # print("(readout of simulation parameters)")
 proceed_with_simulation = input("Y, N? ").upper()
-
 if proceed_with_simulation == "Y":
   print("Simulation Complete")
 elif proceed_with_simulation == "N":
