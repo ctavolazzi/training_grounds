@@ -13,10 +13,13 @@ print("Initializing...")
 warriors = []
 # Ask user how many Warriors to create
 number_of_warriors = input("How many Warriors?: ")
-if number_of_warriors == "0":
+if int(number_of_warriors) <= 0:
   print("Closing Simulation...")
-  quit()
+  quit() # Hard quits the program if you don't generate any Warriors
 # Ask user if they want to customize their Warriors
+number_of_items = input("How many Items do you want to generate? ")
+# similar code to warriors setup here
+
 custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
 
 if custom_warriors.lower() == "y":
@@ -43,7 +46,10 @@ proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
   print("Simulation Complete")
 elif proceed_with_simulation == "N":
-  print("Simulation Cancelled")
+  # Run environmental setup again
+  # Note: environmental setup should be extracted and encapsulated in modular code
+  print("Running environment setup again...")
+  print("ERROR: unable to complete environment setup\nSimulation Cancelled")
 else:
   print("Unrecognized Input...Simulation Cancelled")
 
