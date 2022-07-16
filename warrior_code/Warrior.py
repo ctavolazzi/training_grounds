@@ -1,6 +1,7 @@
 from cgi import test
-import uuid
+# import uuid
 import random
+from warrior_code.warrior_name_generator import warrior_name_generator
 
 class Warrior:
   def __init__(self, name=None, hp=None, ap=None, inventory=None):
@@ -9,7 +10,8 @@ class Warrior:
     self.ap = ap
     self.inventory = inventory
     if name is None:
-      self.name = uuid.uuid4().hex[:6]
+      # self.name = uuid.uuid4().hex[:6]
+      self.name = warrior_name_generator()
     if hp is None:
       self.hp = random.randint(1, 10)
     if ap is None:
@@ -26,6 +28,6 @@ class Warrior:
     else:
       return f'name: {self.name}, hp: {self.hp}, ap: {self.ap}, inventory: {self.inventory}'
 
-# Use when debugging the Warror class
-# test_warrior = Warrior()
-# print(test_warrior)
+# # Debugging
+test_warrior = Warrior()
+print(test_warrior)

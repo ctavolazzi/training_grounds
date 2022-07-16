@@ -1,9 +1,10 @@
 # # Import functions, classes, items, etc
-from Warrior import Warrior
+from warrior_code.Warrior import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
-from helper_functions.item_check import item_check
-# from fight import fight
+from warrior_code.item_check import item_check
+from arena_code.fight import fight
+from app_logic.run_simulation import run_simulation
 
 
 # # Initialize the simulation
@@ -11,16 +12,15 @@ print("Initializing...")
 
 
 # # Set up environmental variables
-warriors = []
-items = []
-# Ask user how many Warriors to create
+warriors = [] # warrior_setup()
+items = [] # item_setup()
+
 number_of_warriors = input("How many Warriors?\n")
 if int(number_of_warriors) <= 0:
   print("Closing Simulation...")
   quit() # Hard quits the program if you don't generate any Warriors
-# Ask user if they want to customize their Warriors
+
 number_of_items = input("How many Items?\n")
-# similar code to warriors setup here
 
 custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
 custom_items = input("Do you want to customize your Items?\n(Y), (N)? ")
@@ -66,7 +66,7 @@ proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
   # Run simulation
   # Call functions here to run the simulation
-  print("Simulation Complete")
+  print("Running simulation...")
 elif proceed_with_simulation == "N":
   # Run environmental setup again
   # Note: environmental setup should be extracted and encapsulated in modular code
@@ -76,4 +76,9 @@ else:
   print("Unrecognized Input...Simulation Cancelled")
 
 # # Run simulation
-# fight_result = fight(warrior1, warrior2)
+result = run_simulation(warriors)
+"""
+Put the warriors in the arena
+Make them fight
+Only one is victorious
+"""
