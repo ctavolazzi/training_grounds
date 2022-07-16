@@ -7,15 +7,6 @@ from helper_functions.item_check import item_check
 
 # # Initialize the simulation
 print("Initializing...")
-# warrior1 = Warrior("Ognar", 100, 5, [Items[0]])
-# print("Warrior 1: ")
-# print(warrior1)
-# for key, value in warrior1.items():
-#   print(key, ' : ', value)
-
-# warrior2 = Warrior("Glubart", 100, 6, [Items[1]])
-# print("Warrior 2 : ")
-# print(warrior2)
 
 
 # # Set up environmental variables
