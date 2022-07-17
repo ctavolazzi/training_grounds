@@ -24,3 +24,5 @@ def item_name_generator(item = None):
 
 # # Debugging
 # print(item_name_generator())
+# df = [1, 2, 3]
+# print(len(df))

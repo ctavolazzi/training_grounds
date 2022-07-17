@@ -22,8 +22,8 @@ if int(number_of_warriors) <= 0:
 
 number_of_items = input("How many Items?\n")
 
-custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
-custom_items = input("Do you want to customize your Items?\n(Y), (N)? ")
+custom_warriors = input("Do you want to set custom values for your Warriors?\n(Y), (N)? ")
+custom_items = input("Do you want to set custom values for your Items?\n(Y), (N)? ")
 
 if custom_items.lower() == "y":
   print("\nPlease customize your Items\n")
@@ -77,7 +77,9 @@ else:
 
 # # Run simulation
 result = run_simulation(warriors)
-print(result)
+print("\nWinners:\n")
+for warrior in result:
+  print(warrior)
 """
 Put the warriors in the arena
 Make them fight
