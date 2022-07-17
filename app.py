@@ -77,6 +77,7 @@ else:
 
 # # Run simulation
 result = run_simulation(warriors)
+print(result)
 """
 Put the warriors in the arena
 Make them fight

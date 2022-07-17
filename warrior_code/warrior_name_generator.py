@@ -21,4 +21,4 @@ def warrior_name_generator(warrior = None):
   return result
 
 # # Debugging
-print(warrior_name_generator())
+# print(warrior_name_generator())
