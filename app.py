@@ -3,7 +3,7 @@ from warrior_code.Warrior import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
 from warrior_code.item_check import item_check
-from arena_code.fight import fight
+# from arena_code.fight import fight
 from app_logic.run_simulation import run_simulation
 
 

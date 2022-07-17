@@ -1,8 +1,11 @@
-def fight(your, their):
-  if your.hp <= 0:
-    return "You are dead"
-  if their.hp <=0:
-    return "Your target is dead"
-  else:
-    print(your.name + " vs " + their.name)
-    return "Fight Logic Runs...\nSomebody wins!"
+"""
+The main logic for how different characters will fight one another
+Fight takes in two Warriors and pitts them against one another
+This should happen asynchronously, so each character can have an attack speed stat
+The attack speed stat should determine how fast the character is able to attack
+"""
+# import asyncio
+
+def fight(atk, dfd):
+  print(atk.name + " vs " + dfd.name)
+  print("Fight happens")
