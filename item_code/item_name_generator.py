@@ -23,4 +23,6 @@ def item_name_generator(item = None):
   return result
 
 # # Debugging
-print(item_name_generator())
+# print(item_name_generator())
+# df = [1, 2, 3]
+# print(len(df))

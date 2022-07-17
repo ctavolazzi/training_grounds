@@ -3,7 +3,7 @@ from warrior_code.Warrior import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
 from warrior_code.item_check import item_check
-from arena_code.fight import fight
+# from arena_code.fight import fight
 from app_logic.run_simulation import run_simulation
 
 
@@ -22,8 +22,8 @@ if int(number_of_warriors) <= 0:
 
 number_of_items = input("How many Items?\n")
 
-custom_warriors = input("Do you want to customize your Warriors?\n(Y), (N)? ")
-custom_items = input("Do you want to customize your Items?\n(Y), (N)? ")
+custom_warriors = input("Do you want to set custom values for your Warriors?\n(Y), (N)? ")
+custom_items = input("Do you want to set custom values for your Items?\n(Y), (N)? ")
 
 if custom_items.lower() == "y":
   print("\nPlease customize your Items\n")
@@ -77,6 +77,9 @@ else:
 
 # # Run simulation
 result = run_simulation(warriors)
+print("\nWinners:\n")
+for warrior in result:
+  print(warrior)
 """
 Put the warriors in the arena
 Make them fight
