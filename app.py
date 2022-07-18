@@ -29,7 +29,7 @@ if custom_items.lower() == "y":
   print("\nPlease customize your Items\n")
   count = 0
   while count < int(number_of_items):
-    item = Item(input("Name: "), input("AP: "))
+    item = Item(input("Name: "), int(input("AP: ")))
     print("Item " + str(count)+ ":\n", item, "\n")
     items.append(item)
     count+=1
@@ -44,7 +44,7 @@ if custom_warriors.lower() == "y":
   print("\nPlease customize your Warriors\n")
   count = 0
   while count < int(number_of_warriors):
-    warrior = Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(items))
+    warrior = Warrior(input("Name: "), int(input("HP: ")), int(input("AP: ")), item_check(items))
     print("Warrior " + str(count) + ":\n", warrior, "\n")
     warriors.append(warrior)
     count+=1
