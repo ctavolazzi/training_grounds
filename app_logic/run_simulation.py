@@ -38,15 +38,15 @@ def run_simulation(warriors, items):
         if comb2.hp <= 0 and comb1.hp > 0:
           print(comb1.name + " wins!")
           for item in comb2.inventory:
-            comb1.inventory.append(item)
-            # comb1.pick_up(item)
+            # comb1.inventory.append(item)
+            comb1.pick_up(item)
           winners.append(comb1)
           break
         elif comb1.hp <= 0 and comb2.hp > 0:
           print(comb2.name + " wins!")
           for item in comb1.inventory:
-            comb2.inventory.append(item)
-            # comb2.pick_up(item)
+            # comb2.inventory.append(item)
+            comb2.pick_up(item)
           winners.append(comb2)
           break
         elif comb1.hp <= 0 and comb2.hp <= 0:
