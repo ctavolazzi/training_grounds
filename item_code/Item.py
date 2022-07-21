@@ -14,7 +14,7 @@ class Item:
 
   def __str__(self):
     # return f'name: {self.name}, ap: {self.ap}, id: {id(self)}' # I discovered there's a built-in id function and I didn't need the uuid thing at all. Such is life.
-    return f'name: {self.name}, ap: {self.ap}'
+    return f'NAME: {self.name}, AP: {self.ap}'
 
   # def __repr__(self):
   #   return f'name: {self.name}, ap: {self.ap}, abilities: {self.abilities}'
