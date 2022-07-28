@@ -46,6 +46,7 @@ if custom_warriors.lower() == "y":
   while count < int(number_of_warriors):
     warrior = Warrior(input("Name: "), int(input("HP: ")), int(input("AP: ")), item_check(all_items))
     print("Warrior " + str(count) + ":\n", warrior, "\n")
+    warrior.yell()
     all_warriors.append(warrior)
     count+=1
 else:
@@ -82,7 +83,7 @@ if proceed_with_simulation == "Y":
     print(all_warriors[0])
   else:
     print("\nNo Warriors remain!")
-    print(all_warriors)
+    print(all_warriors) # used for debugging
   # winners = run_simulation(all_warriors)
   # print("\nWinners:\n")
   # for warrior in winners:
