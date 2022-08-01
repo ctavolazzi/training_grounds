@@ -1,10 +1,13 @@
 # # Import functions, classes, items, etc
-from warrior_code.Warrior import Warrior
+from warrior_code.Warrior import Custom_Warrior
+from warrior_code.Warrior_v2 import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
 from warrior_code.item_check import item_check
 # from arena_code.fight import fight
 from app_logic.run_simulation import run_simulation
+from app_logic.commence_battle import commence_battle
+from app_logic.run_simulation_v2 import run_simulation_v2
 
 
 # # Initialize the simulation
@@ -44,7 +47,7 @@ if custom_warriors.lower() == "y":
   print("\nPlease customize your Warriors\n")
   count = 0
   while count < int(number_of_warriors):
-    warrior = Warrior(input("Name: "), int(input("HP: ")), int(input("AP: ")), item_check(all_items))
+    warrior = Custom_Warrior(input("Name: "), int(input("HP: ")), int(input("AP: ")), item_check(all_items))
     print("Warrior " + str(count) + ":\n", warrior, "\n")
     warrior.yell()
     all_warriors.append(warrior)
@@ -53,7 +56,7 @@ else:
   print("Generating random Warriors...\n")
   count = 0
   while count < int(number_of_warriors):
-    warrior = Warrior(None, None, None, [])
+    warrior = Custom_Warrior(None, None, None, [])
     print("\nWarrior " + str(count + 1) + ":\n", warrior, "\n")
     # for item in all_items:
     #   warrior.item_check(item)
@@ -65,8 +68,8 @@ else:
 # # Perform final check
 print("\nDoes this look right?")
 print("\nWarriors: ")
-for Warrior in all_warriors:
-  print(Warrior)
+for warrior in all_warriors:
+  print(warrior)
 # print("(readout of simulation parameters)")
 proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
@@ -74,16 +77,25 @@ if proceed_with_simulation == "Y":
   # Call functions here to run the simulation
   print("\nRunning simulation...")
   # # Run simulation
-  while(len(all_warriors) > 1):
-    winners = run_simulation(all_warriors, all_items)
+  # grand_victors = run_simulation_v2(all_warriors)
+  while(len(all_warriors) >= 2):
+    winners = run_simulation_v2(all_warriors)
     all_warriors = winners
   print("\nSimulation complete!")
-  if(len(all_warriors) == 1):
-    print("\nFinal Warrior: ")
-    print(all_warriors[0])
-  else:
-    print("\nNo Warriors remain!")
-    print(all_warriors) # used for debugging
+  print("\nFinal Victor: ")
+  for w in all_warriors:
+    print(w)
+  print("\nNumber of Items: " + str(len(all_warriors[0].inventory)))
+  print("\nTotal Winners: " + str(len(all_warriors)))
+  # print("\nGrand Victors: ")
+  # for w in grand_victors:
+  #   print(w)
+  # if(len(all_warriors) == 1):
+  #   print("\nFinal Warrior: ")
+  #   print(all_warriors[0])
+  # else:
+  #   print("\nNo Warriors remain!")
+  #   print(all_warriors) # used for debugging
   # winners = run_simulation(all_warriors)
   # print("\nWinners:\n")
   # for warrior in winners:

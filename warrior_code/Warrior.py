@@ -1,10 +1,10 @@
-from cgi import test
+# from cgi import test
 # import uuid
 import random
 from warrior_code.warrior_name_generator import warrior_name_generator
 # from warrior_name_generator import warrior_name_generator
 
-class Warrior:
+class Custom_Warrior:
   def __init__(self, name=None, hp=None, ap=None, inventory=None):
     self.name = name
     self.hp = hp
@@ -30,10 +30,13 @@ class Warrior:
       return f'NAME: {self.name}, HP: {self.hp}, AP: {self.ap}, inventory: {self.inventory}'
 
   def attack(self, target):
-    print(f'{self.name} attacks {target.name} for {self.ap} damage')
-    target.hp -= self.ap
-    # print(f'{self.name} HP: {self.hp}')
-    # print(f'{target.name} HP: {target.hp}')
+    if self.hp > 0:
+      print(f'{self.name} attacks {target.name} for {self.ap} damage')
+      target.hp -= self.ap
+      # print(f'{self.name} HP: {self.hp}')
+      # print(f'{target.name} HP: {target.hp}')
+    else:
+      print(f'{self.name} is dead')
 
   def item_check(self, item):
     print(f'{self.name} checks their inventory')
@@ -49,11 +52,12 @@ class Warrior:
       print(f'{item.name} has no AP')
     return self.inventory
 
-  def grab_random_item(self, all_items):
-    item = random.choice(all_items)
-    print(f'{self.name} ({self.ap} AP) chooses a random item:')
-    print(item)
-    self.pick_up(item)
+  def grab_random_item(self, items):
+    if (len(items) > 0):
+      item = items.pop(random.randint(0, len(items)-1))
+      print(f'{self.name} ({self.ap} AP) chooses a random item:')
+      print(item)
+      self.pick_up(item)
     # self.inventory.append(item)
     # if (item.ap > 0):
     #   self.ap += item.ap
@@ -65,6 +69,9 @@ class Warrior:
   def yell(self):
     print(f'{self.name} yells: "I am a warrior!"')
     return self.name
+
+  def add_method(self, method_name, method):
+    self[method_name] = method
 
 
 # # Debugging

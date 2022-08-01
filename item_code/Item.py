@@ -19,6 +19,10 @@ class Item:
   # def __repr__(self):
   #   return f'name: {self.name}, ap: {self.ap}, abilities: {self.abilities}'
 
+  def add_method(self, method_name, method):
+    setattr(self, method_name, method)
+    return self
+
 # # Debugging
 # test_group = []
 # for x in range(3):
