@@ -1,10 +1,13 @@
 # # Import functions, classes, items, etc
-from warrior_code.Warrior import Warrior
+from warrior_code.Warrior import Custom_Warrior
+from warrior_code.Warrior_v2 import Warrior
 # from item_code.Items import Items # Obsolete - could be used to create a default set of items
 from item_code.Item import Item
 from warrior_code.item_check import item_check
 # from arena_code.fight import fight
 from app_logic.run_simulation import run_simulation
+from app_logic.commence_battle import commence_battle
+from app_logic.run_simulation_v2 import run_simulation_v2
 
 
 # # Initialize the simulation
@@ -12,8 +15,8 @@ print("Initializing...")
 
 
 # # Set up environmental variables
-warriors = [] # warrior_setup()
-items = [] # item_setup()
+all_warriors = [] # warrior_setup()
+all_items = [] # item_setup()
 
 number_of_warriors = input("How many Warriors?\n")
 if int(number_of_warriors) <= 0:
@@ -29,57 +32,82 @@ if custom_items.lower() == "y":
   print("\nPlease customize your Items\n")
   count = 0
   while count < int(number_of_items):
-    item = Item(input("Name: "), input("AP: "))
+    item = Item(input("Name: "), int(input("AP: ")))
     print("Item " + str(count)+ ":\n", item, "\n")
-    items.append(item)
+    all_items.append(item)
     count+=1
 else:
   print("Generating random Items...\n")
   count = 0
   while count < int(number_of_items):
-    items.append(Item(None, None))
+    all_items.append(Item(None, None))
     count+=1
 
 if custom_warriors.lower() == "y":
   print("\nPlease customize your Warriors\n")
   count = 0
   while count < int(number_of_warriors):
-    warrior = Warrior(input("Name: "), input("HP: "), input("AP: "), item_check(items))
+    warrior = Custom_Warrior(input("Name: "), int(input("HP: ")), int(input("AP: ")), item_check(all_items))
     print("Warrior " + str(count) + ":\n", warrior, "\n")
-    warriors.append(warrior)
+    warrior.yell()
+    all_warriors.append(warrior)
     count+=1
 else:
   print("Generating random Warriors...\n")
   count = 0
   while count < int(number_of_warriors):
-    warriors.append(Warrior(None, None, None, item_check(items)))
+    warrior = Custom_Warrior(None, None, None, [])
+    print("\nWarrior " + str(count + 1) + ":\n", warrior, "\n")
+    # for item in all_items:
+    #   warrior.item_check(item)
+    warrior.grab_random_item(all_items)
+    all_warriors.append(warrior)
     count+=1
 
 
 # # Perform final check
-print("Does this look right?")
-print("Warriors: ")
-for Warrior in warriors:
-  print(Warrior)
+print("\nDoes this look right?")
+print("\nWarriors: ")
+for warrior in all_warriors:
+  print(warrior)
 # print("(readout of simulation parameters)")
 proceed_with_simulation = input("Y, N? ").upper()
 if proceed_with_simulation == "Y":
   # Run simulation
   # Call functions here to run the simulation
-  print("Running simulation...")
+  print("\nRunning simulation...")
+  # # Run simulation
+  # grand_victors = run_simulation_v2(all_warriors)
+  while(len(all_warriors) >= 2):
+    winners = run_simulation_v2(all_warriors)
+    all_warriors = winners
+  print("\nSimulation complete!")
+  print("\nFinal Victor: ")
+  for w in all_warriors:
+    print(w)
+  print("\nNumber of Items: " + str(len(all_warriors[0].inventory)))
+  print("\nTotal Winners: " + str(len(all_warriors)))
+  # print("\nGrand Victors: ")
+  # for w in grand_victors:
+  #   print(w)
+  # if(len(all_warriors) == 1):
+  #   print("\nFinal Warrior: ")
+  #   print(all_warriors[0])
+  # else:
+  #   print("\nNo Warriors remain!")
+  #   print(all_warriors) # used for debugging
+  # winners = run_simulation(all_warriors)
+  # print("\nWinners:\n")
+  # for warrior in winners:
+  #   print(warrior)
 elif proceed_with_simulation == "N":
   # Run environmental setup again
   # Note: environmental setup should be extracted and encapsulated in modular code
-  print("Running environment setup again...")
-  print("ERROR: unable to complete environment setup\nSimulation Cancelled")
+  print("\nRunning environment setup again...")
+  print("\nERROR: unable to complete environment setup\nSimulation Cancelled")
 else:
-  print("Unrecognized Input...Simulation Cancelled")
+  print("\nUnrecognized Input...Simulation Cancelled")
 
-# # Run simulation
-result = run_simulation(warriors)
-print("\nWinners:\n")
-for warrior in result:
-  print(warrior)
 """
 Put the warriors in the arena
 Make them fight

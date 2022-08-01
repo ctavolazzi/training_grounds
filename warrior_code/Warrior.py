@@ -1,10 +1,10 @@
-from cgi import test
+# from cgi import test
 # import uuid
 import random
 from warrior_code.warrior_name_generator import warrior_name_generator
 # from warrior_name_generator import warrior_name_generator
 
-class Warrior:
+class Custom_Warrior:
   def __init__(self, name=None, hp=None, ap=None, inventory=None):
     self.name = name
     self.hp = hp
@@ -14,7 +14,7 @@ class Warrior:
       # self.name = uuid.uuid4().hex[:6]
       self.name = warrior_name_generator()
     if hp is None:
-      self.hp = random.randint(1, 10)
+      self.hp = random.randint(1, 100)
     if ap is None:
       self.ap = random.randint(1, 10)
     if inventory is None:
@@ -25,13 +25,54 @@ class Warrior:
       inv = []
       for item in self.inventory:
         inv.append(str(item))
-      return f'name: {self.name}, hp: {self.hp}, ap: {self.ap}, inventory: {inv}'
+      return f'NAME: {self.name}, HP: {self.hp}, AP: {self.ap}, inventory: {inv}'
     else:
-      return f'name: {self.name}, hp: {self.hp}, ap: {self.ap}, inventory: {self.inventory}'
+      return f'NAME: {self.name}, HP: {self.hp}, AP: {self.ap}, inventory: {self.inventory}'
 
   def attack(self, target):
-    print(f'{self.name} attacks {target.name} for {self.ap} damage')
-    target.hp -= self.ap
+    if self.hp > 0:
+      print(f'{self.name} attacks {target.name} for {self.ap} damage')
+      target.hp -= self.ap
+      # print(f'{self.name} HP: {self.hp}')
+      # print(f'{target.name} HP: {target.hp}')
+    else:
+      print(f'{self.name} is dead')
+
+  def item_check(self, item):
+    print(f'{self.name} checks their inventory')
+    print(item)
+
+  def pick_up(self, item):
+    print(f'{self.name} picks up the {item.name}')
+    if (item.ap > 0):
+      self.ap += item.ap
+      print(f'{self.name} now has {self.ap} AP')
+      self.inventory.append(item)
+    else:
+      print(f'{item.name} has no AP')
+    return self.inventory
+
+  def grab_random_item(self, items):
+    if (len(items) > 0):
+      item = items.pop(random.randint(0, len(items)-1))
+      print(f'{self.name} ({self.ap} AP) chooses a random item:')
+      print(item)
+      self.pick_up(item)
+    # self.inventory.append(item)
+    # if (item.ap > 0):
+    #   self.ap += item.ap
+    #   print(f'{self.name} now has {self.ap} AP')
+    # else:
+    #   print(f'{item.name} has no AP')
+    return self.inventory
+
+  def yell(self):
+    print(f'{self.name} yells: "I am a warrior!"')
+    return self.name
+
+  def add_method(self, method_name, method):
+    self[method_name] = method
+
 
 # # Debugging
 # test_warrior = Warrior()
