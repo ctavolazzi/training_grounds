@@ -1,6 +1,7 @@
 # from cgi import test
 # import uuid
 import random
+from warrior_code.Warrior_v2 import Warrior
 from warrior_code.warrior_name_generator import warrior_name_generator
 # from warrior_name_generator import warrior_name_generator
 
